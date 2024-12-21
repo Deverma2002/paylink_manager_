@@ -1,0 +1,245 @@
+<div class="container">
+ 
+  <div class="dashboard-container">
+    <div class="datedown">
+      <div class="date-container">
+        <mat-form-field appearance="outline" class="date-field">
+          <mat-label>Date Filter</mat-label>
+          <mat-select [(value)]="selectedDateRange" (selectionChange)="applyDateFilter()">
+            <mat-option value="today">Today</mat-option>
+            <mat-option value="yesterday">Yesterday</mat-option>
+            <mat-option value="thisWeek">This Week</mat-option>
+            <mat-option value="thisMonth">This Month</mat-option>
+            <mat-option value="custom">Custom Range</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <div *ngIf="selectedDateRange === 'custom'" class="custom-date-range">
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label>Start Date</mat-label>
+            <input matInput [(ngModel)]="customStartDate" placeholder="MM/DD/YYYY" [matDatepicker]="startPicker" (ngModelChange)="applyDateFilter()" />
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="date-field">
+            <mat-label>End Date</mat-label>
+            <input matInput [(ngModel)]="customEndDate" placeholder="MM/DD/YYYY" [matDatepicker]="endPicker" (ngModelChange)="applyDateFilter()" />
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+<div class="container mt-5">
+  <div class="row justify-content-center g-4 cards-container">
+    <!-- Total Leads Allocated Card -->
+    <div class="col-6 d-flex justify-content-center">
+      <div class="card leads-card allocated shadow-sm">
+        <div class="circle">
+          <div class="circle-title">Total Leads Allocated</div>
+        </div>
+        <div class="card-body text-center">
+          <div class="circle-content">{{ totalLeadsAllocated }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Leads Completed Card -->
+    <div class="col-6 d-flex justify-content-center">
+      <div class="card leads-card completed shadow-sm">
+        <div class="circle">
+          <div class="circle-title">Total Leads Completed</div>
+        </div>
+        <div class="card-body text-center">
+          <div class="circle-content">{{ totalLeadsCompleted }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Card Section -->
+<!-- Card Section -->
+<div class="cards-container-wrapper mt-5">
+  <div class="row justify-content-center g-4">
+    <!-- First Card: Premium Plan -->
+    <!-- First Card: Premium Plan -->
+<div class="col-md-6 col-12 d-flex justify-content-center">
+  <div class="card card-outline shadow-sm" style="width: 28rem;">
+    <div class="card-body text-center">
+      <label class="price-label">
+        <i class="bi bi-currency-rupee"></i> 299
+      </label>
+      <div class="circular-container-wrapper mb-4">
+        <div class="circular-container">
+          <div class="circular-progress" style="--progress: 75;">
+            <div class="progress-value">₹{{ card299Profit }} </div>
+          </div>
+          <p class="meter-title">Profit & Loss</p>
+        </div>
+        <div class="circular-container">
+          <div class="circular-progress" style="--progress: 50;">
+            <div class="progress-value">{{ card299Leads }}</div>
+          </div>
+          <p class="meter-title">Total Leads</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Card: Standard Plan -->
+<div class="col-md-6 col-12 d-flex justify-content-center">
+  <div class="card card-outline shadow-sm" style="width: 28rem;">
+    <div class="card-body text-center">
+      <label class="price-label">
+        <i class="bi bi-currency-rupee"></i> 149
+      </label>
+      <div class="circular-container-wrapper mb-4">
+        <div class="circular-container">
+          <div class="circular-progress" style="--progress: 65;">
+            <div class="progress-value">₹{{ card149Profit }} </div>
+          </div>
+          <p class="meter-title">Profit & Loss</p>
+        </div>
+        <div class="circular-container">
+          <div class="circular-progress" style="--progress: 40;">
+            <div class="progress-value">{{ card149Leads }}</div>
+          </div>
+          <p class="meter-title">Total Leads</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+
+  <!-- Card Component -->
+  <mat-card class="custom-card">
+    <div class="card-header">
+      <div class="greeting">Good Morning</div>
+      <div class="task">
+        <span>Task Generation</span>
+        <mat-form-field class="dropdown" appearance="outline">
+          <mat-label>Options</mat-label>
+          <mat-select [(ngModel)]="taskOption" (selectionChange)="onOptionSelect()">
+            <mat-option value="generate">Generate</mat-option>
+            <mat-option value="import">Import</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div *ngIf="showFileInput" class="file-import">
+      <label for="fileUpload">Upload File:</label>
+      <input type="file" id="fileUpload" accept=".csv, .pdf" (change)="onFileUpload($event)" />
+      <button mat-raised-button color="primary" (click)="onSaveFile()">Save</button>
+    </div>
+    
+    <div *ngIf="showFileUploadAlert" class="custom-alert">
+      <div class="alert-content">
+        <p>{{ fileUploadAlertMessage }}</p>
+        <button (click)="closeFileUploadAlert()">OK</button>
+      </div>
+    </div>
+
+    <div *ngIf="taskOption === 'generate'" class="generate-option">
+      <hr />
+      <span>Generate the token</span>
+      <button mat-raised-button color="accent" (click)="generateToken()">Generate</button>
+    </div>
+    
+    <div class="allocation-action">
+      <span>Allocate the leads to the Team Leader</span>
+      <button mat-raised-button color="primary" (click)="allocateLeads()">Allocate</button>
+    </div>
+    
+  </mat-card>
+
+   
+  <div *ngIf="showFileUploadAlert" class="custom-alert">
+    <div class="alert-content">
+      <p>{{ fileUploadAlertMessage }}</p>
+      <button (click)="closeFileUploadAlert()">OK</button>
+    </div>
+  </div>
+  
+  <div class="custom-alert" *ngIf="showAlert">
+    <div class="alert-content">
+      <p>{{ alertMessage }}</p>
+      <button (click)="closeAlert()">OK</button>
+    </div>
+  </div>
+
+  <div class="team-container">
+    <div class="team-card" *ngFor="let team of teams">
+      <div class="card-header"></div>
+      <div class="card-content">
+        <h3>{{ team.teamName }}</h3>
+        <p><strong>Team ID:</strong> {{ team.teamId }}</p>
+        <p><strong>Leads Allocated:</strong> {{ team.leadsAllocated }}</p>
+        <p><strong>Leads Completed:</strong> {{ team.leadsCompleted }}</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Table Component -->
+  <mat-table [dataSource]="teams" class="mat-elevation-z8 custom-table">
+    <!-- Team Name Column -->
+    <ng-container matColumnDef="teamName">
+      <mat-header-cell *matHeaderCellDef> Team Name </mat-header-cell>
+      <mat-cell *matCellDef="let team"> {{ team.teamName }} </mat-cell>
+    </ng-container>
+
+    <!-- Team ID Column -->
+    <ng-container matColumnDef="teamId">
+      <mat-header-cell *matHeaderCellDef> Team ID </mat-header-cell>
+      <mat-cell *matCellDef="let team"> {{ team.teamId }} </mat-cell>
+    </ng-container>
+
+    <!-- Team Status Column -->
+    <ng-container matColumnDef="teamStatus">
+      <mat-header-cell *matHeaderCellDef> Team Status </mat-header-cell>
+      <mat-cell *matCellDef="let team"> {{ team.teamStatus }} </mat-cell>
+    </ng-container>
+
+    <!-- Allocation Column -->
+    <ng-container matColumnDef="allocation">
+      <mat-header-cell *matHeaderCellDef> Allocation Status </mat-header-cell>
+      <mat-cell *matCellDef="let team"> {{ team.allocation || "Not Allocated"}} </mat-cell>
+    </ng-container>
+
+    <!-- Allocated Time Column -->
+    <ng-container matColumnDef="allocatedTime">
+      <mat-header-cell *matHeaderCellDef> Allocated Date</mat-header-cell>
+      <mat-cell *matCellDef="let team">
+        {{ team.allocatedTime ? team.allocatedTime : 'Not Allocated' || "null" }}
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="teamCapacity">
+      <mat-header-cell *matHeaderCellDef> Team Capacity </mat-header-cell>
+      <mat-cell *matCellDef="let team"> {{ team.teamCapacity || 'N/A' }} </mat-cell>
+    </ng-container>
+
+    <!-- Task Completion Column -->
+    <!-- <ng-container matColumnDef="completion">
+      <mat-header-cell *matHeaderCellDef> Task Completion </mat-header-cell>
+      <mat-cell *matCellDef="let team">
+        <button mat-raised-button color="accent" (click)="approveTask(team)">
+          Approve
+        </button>
+      </mat-cell>
+    </ng-container> -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

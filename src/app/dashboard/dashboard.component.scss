@@ -1,0 +1,628 @@
+/* General container for the layout */
+.container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;  /* Light background for contrast */
+  border-radius: 10px;
+}
+/* Styling for the date container card */
+.datedown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .date-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .date-field {
+      width: 200px;
+    }
+  }
+
+  .custom-date-range {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+/* Card component styling */
+.custom-card {
+  margin-top: 50px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .greeting {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-start;
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .dropdown {
+      width: 160px;
+      .mat-form-field-infix {
+        background-color: #e9ecef;
+      }
+
+      .mat-select-trigger {
+        color: #007bff;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .allocation-action {
+    display: flex;
+    align-items: center; /* Align items inline */
+    gap: 10px;
+    
+    span {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #070707;
+    }
+
+    button {
+      margin-left: 10px; /* Slight gap between the span and button */
+      font-size: 0.9rem;  /* Smaller font size */
+      padding: 8px 16px;  /* Smaller padding */
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  /* Generate section when 'generate' is selected */
+  .generate-option {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #333;
+
+    hr {
+      border: 1px solid #007bff;
+      margin-bottom: 15px;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      // color: #007bff;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 8px 16px;  /* Smaller padding */
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}
+
+  /* File import section */
+  .file-import {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+
+    label {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      font-size: 1rem;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        border-color: #007bff;  /* Blue border on hover */
+      }
+    }
+  }
+
+
+
+
+/* Styling for the table */
+.custom-table {
+  margin-top: 50px;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  mat-header-cell {
+    font-weight: bold;
+    background-color: #007bff; /* Blue background for header */
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #e1e1e1;
+  }
+
+  mat-cell {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  mat-row:nth-child(even) {
+    background-color: #f1f9fc; /* Light blue for even rows */
+  }
+
+  mat-row:hover {
+    background-color: #e0f7fa; /* Lighter blue on hover */
+  }
+
+  /* Styling for the status chip */
+  .status-chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .status-chip.completed {
+    background-color: #28a745; /* Green for completed */
+    color: white;
+  }
+
+  .status-chip.pending {
+    background-color: #ffc107; /* Yellow for pending */
+    color: black;
+  }
+}
+
+/* Button styling for task allocation */
+.allocate-btn {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+}
+
+
+
+
+.custom-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
+
+  .alert-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+
+    p {
+      margin: 0 0 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+//card/* Container for Team Cards */
+.team-container {
+  display: flex;
+  flex-wrap: wrap; /* Cards will wrap to the next line if space runs out */
+  justify-content: center; /* Center cards horizontally */
+  gap: 24px; /* Space between cards */
+  padding: 16px;
+}
+
+/* Team Card Styling */
+.team-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Restrict card width for better appearance */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-header {
+    background-color: #007bff; /* Blue top strip */
+    height: 8px; /* Height of the strip */
+    width: 100%;
+  }
+
+  .card-content {
+    padding: 16px;
+
+    h3 {
+      color: #007bff; /* Team name in blue */
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 4px 0;
+      color: #333;
+    }
+  }
+}
+
+/* Responsive Breakpoints */
+@media screen and (min-width: 768px) {
+  .team-card {
+    flex: 1 1 calc(50% - 24px); /* Two cards per row on medium screens */
+    max-width: calc(50% - 24px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .team-card {
+    flex: 1 1 calc(33.333% - 24px); /* Three cards per row on larger screens */
+    max-width: calc(33.333% - 24px);
+  }
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .leads-card {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+
+    // Half-circle container
+    .circle {
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%; // Makes it a perfect circle
+      background-color: #0d6efd;
+      border-bottom-left-radius: 100%;
+      border-bottom-right-radius: 100%;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .circle-title {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+
+      .circle-content {
+        font-size: 28px;
+        font-weight: bold;
+      }
+    }
+
+    &.allocated .circle-content {
+      color: red;
+    }
+
+    &.completed .circle-content {
+      color: green;
+    }
+  }
+
+  // Responsive behavior for smaller screens
+  @media (max-width: 768px) {
+    .leads-card {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+.card-outline {
+  border: 2px solid #0c0d0e;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  position: relative;
+  background-color: white;
+  width: 100%;  /* Ensure card is responsive */
+
+  .price-label {
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 2px solid #18191a;
+    border-radius: 0.5rem;
+    color: #0d6efd;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding: 0.25rem 1rem;
+  }
+
+  // Wrapper for circular containers
+  .circular-container-wrapper {
+    display: flex;
+    gap: 3.5rem;  /* Gap between circles */
+    margin-bottom: 1rem;
+    // margin-left: 60px;
+    margin-top: 1rem;
+    flex-wrap: wrap;  // Allow wrapping but will override on mobile
+    justify-content: space-evenly; /* Align the circles in a row */
+  }
+
+  .circular-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;  /* Ensure the circles fit within the available width */
+  }
+
+  .circular-progress {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+      #0d6efd calc(var(--progress) * 1%), #e9ecef calc(var(--progress) * 1%)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d6efd;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .progress-value {
+      position: relative;
+      z-index: 1;
+      color: #495057;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    // .progress-arrow {
+    //   font-size: 1.5rem;
+    //   color: #0d6efd;
+    // }
+
+    .percentage {
+      font-size: 0.9rem;
+    }
+  }
+
+  .meter-title {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+// Green and red arrows and percentage values
+.progress-arrow.up {
+        font-size: 2rem;
+
+  color: green;  // Upwards arrow for profit
+}
+
+.progress-arrow.down {
+  color: red;  // Downwards arrow for loss
+}
+
+.percentage {
+  font-weight: bold;
+}
+
+// Ensure cards are stacked in a responsive manner
+.cards-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;  /* Light background for contrast */
+  border-radius: 10px;
+}
+
+/* Media Query for smaller screens (max-width: 1440px, as in the Galaxy S20 Ultra) */
+@media (max-width: 1440px) {
+  .card-outline {
+    width: 100%;  /* Cards will take full width on small screens */
+    padding: 0.5rem;  /* Optional: reduce padding for smaller screens */
+  }
+
+  .circular-container-wrapper {
+    gap: 2rem;  /* Reduce gap between circles for mobile */
+    flex-wrap: nowrap;  /* Prevent wrapping of circular meters */
+    margin-left: auto;
+    margin-right: auto;  /* Center the circular containers */
+  }
+
+  .circular-container {
+    width: 45%;  /* Allow each circular container to take up more width */
+  }
+
+  .circular-progress {
+    width: 100px;  /* Reduce size of circular progress on mobile */
+    height: 100px;  /* Adjust height */
+    font-size: 1.1rem;  /* Slightly smaller font size on mobile */
+  }
+
+  .progress-value {
+    font-size: 0.9rem;  /* Smaller font size for progress value */
+  }
+
+  .meter-title {
+    font-size: 0.8rem;  /* Reduce meter title font size */
+  }
+}
+
+/* Further Adjustments for Smallest Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .card-outline {
+    width: 100%;  /* Cards will take full width on small screens */
+    padding: 0.5rem;
+  }
+
+  .circular-container-wrapper {
+    gap: 3rem;  /* Reduce gap between circles for smaller screens */
+    flex-wrap: nowrap;  /* Prevent wrapping of circular meters */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+
+  .circular-container {
+    width: 45%;  /* Adjust width for better fit on mobile */
+  }
+
+  .circular-progress {
+    width: 80px;  /* Further reduce size of circular progress on mobile */
+    height: 80px;  /* Adjust height */
+    font-size: 1rem;  /* Reduce font size on mobile */
+  }
+
+  .progress-value {
+    font-size: 0.8rem;  /* Smaller font size for progress value */
+  }
+
+  .meter-title {
+    font-size: 0.8rem;  /* Reduce meter title font size */
+  }
+}
